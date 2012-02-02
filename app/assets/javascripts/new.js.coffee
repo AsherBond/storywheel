@@ -17,7 +17,8 @@ $(".goToStep2").live "click", (e) ->
   e.preventDefault()
 
 $(window).keyup (e) ->
-  if e.keyCode == 32 && $("body#record").length > 0
+  spaceKeyCode = 32
+  if e.keyCode == spaceKeyCode && SW.getState() == "record"
     SW.showNextImageFromSelection()
     e.preventDefault()
 
@@ -40,7 +41,6 @@ $("#goToStep3").live "click", (e) ->
   e.preventDefault()
   
 $("#uploadButton").live "click", (e) ->
-  SC.options.site = "soundcloud.com" # TODO remove
   e.preventDefault()
   SC.connect
     connected: ->
@@ -60,10 +60,7 @@ $("#uploadButton").live "click", (e) ->
       $("#progressMessage").text("Uploading...")
       SC.recordUpload options, (track) -> 
         $("#progressMessage").text("Processing...")
-
         storyUrl = "http://storywheel.cc/" + track.user.permalink + "/" + track.permalink
-        # update description with link to carousel
-        # create comments
         i = 0
         $.each SW.slides, ->
           slide = this
@@ -75,11 +72,10 @@ $("#uploadButton").live "click", (e) ->
               timestamp: slide.timestamp
             }
           }, (comment) ->
-            # ignore
+            # comment created. no action
         
         SC.put "/groups/" + SW.options.soundcloudGroupId + "/contributions/" + track.id, (contribution) ->
-          #contributed
-        
+          # track contributed to group. no action
         checkState = -> 
           SC.get track.uri, (track) -> 
             if track.state == "finished"
@@ -100,14 +96,3 @@ $(".cancel").live "click", (e) ->
 $(".reset .no").live "click", (e) ->
   $(this).closest(".reset").removeClass("really")
   e.preventDefault()
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
