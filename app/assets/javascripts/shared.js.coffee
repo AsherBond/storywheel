@@ -169,6 +169,27 @@ window.SW =
         $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 SW.Helpers =
+  waitTillTrackIsFinished: (uri, callback) ->
+    checkState = ->
+      SC.get uri, (track) ->
+        if track.state == "finished"
+          callback(track)
+        else
+          window.setTimeout(checkState, 2000)
+    # wait 2 seconds before first check to work around stale "state: storing" cache bug in SC API
+    window.setTimeout(checkState, 2000)
+
+  createCommentForSlide: (track, slide) ->
+    storyUrl = track.permalink_url.replace("soundcloud.com", "storywheel.cc")
+    body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Picture</a>"
+    SC.post track.uri + "/comments", {
+      comment: {
+        body: body,
+        timestamp: slide.timestamp
+      }
+    }, (comment) ->
+      # comment created. no action
+
   imageUrlFromComment: (comment) ->
     comment.body.match(/#([^>]*)\>/)[1]
   

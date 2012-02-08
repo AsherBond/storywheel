@@ -58,31 +58,16 @@ $("#uploadButton").live "click", (e) ->
       SW.setState("upload")
       $(".progress #wheel", window).addClass("rotate")
       $("#progressMessage").text("Uploading...")
-      SC.recordUpload options, (track) -> 
+      SC.recordUpload options, (track) ->
         $("#progressMessage").text("Processing...")
-        storyUrl = "http://storywheel.cc/" + track.user.permalink + "/" + track.permalink
-        i = 0
         $.each SW.slides, ->
-          slide = this
-          i++
-          body = "<a href=" + storyUrl + "#" + slide.imageUrl + ">StoryWheel Picture #" + i + "</a>"
-          SC.post track.uri + "/comments", {
-            comment: {
-              body: body,
-              timestamp: slide.timestamp
-            }
-          }, (comment) ->
-            # comment created. no action
+          SW.Helpers.createCommentForSlide(track, this)
         
         SC.put "/groups/" + SW.options.soundcloudGroupId + "/contributions/" + track.id, (contribution) ->
           # track contributed to group. no action
-        checkState = -> 
-          SC.get track.uri, (track) -> 
-            if track.state == "finished"
-              window.location = track.permalink_url.replace("soundcloud.com", window.location.host)
-            else
-              window.setTimeout(checkState, 2000)
-        window.setTimeout(checkState, 2000)    
+
+        SW.Helpers.waitTillTrackIsFinished track.uri, (track) ->
+          window.location = track.permalink_url.replace("soundcloud.com", window.location.host)
     
 $(".connectInstagram").live 'click', (e) ->
   e.preventDefault()
