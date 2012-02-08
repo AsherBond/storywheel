@@ -38,6 +38,7 @@ class StoriesController < ApplicationController
 
   # GET /stories.json
   def index
+    @options = DEFAULT_OPTIONS
     expires_in 15.minutes, :public => true
     @social = SOCIAL
     respond_to do |format|
