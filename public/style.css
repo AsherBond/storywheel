@@ -1187,7 +1187,7 @@ h3.help {
 	margin: 20px auto;
 }
 
-body#connect h3.help.pick, body#pick h3.help.connecti {
+body#connect h3.help.pick, body#pick h3.help.connect {
 	display: none;
 }
 
