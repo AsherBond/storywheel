@@ -1,8 +1,7 @@
 # Story Wheel
 ## Introduction
 
-Story Wheel was created by Johannes Wagener and Katharina Birkenbach during MusicHackDay Boston 2011.
-It lets people record a story around their Instagram pictures and share it as a nostalgic slideshow on the web. Check it out on http://storywheel.cc
+Story Wheel lets you record a story around your Instragram pictures and share it on the web as a nostalgic slideshow. It was started by Johannes Wagener & Katharina Birkenbach during the Music Hack Day Boston in 2011 and is now part of the SoundCloud Labs, where we showcase a number of experimental projects, features and apps built using SoundCloud’s API.
 
 ## Technical Details
 
