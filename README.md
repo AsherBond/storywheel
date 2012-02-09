@@ -2,23 +2,19 @@
 ## Introduction
 
 Story Wheel was created by Johannes Wagener and Katharina Birkenbach during MusicHackDay Boston 2011.
-It lets people record a story around their Instagram pictures and share it as a nostalgic slideshow on the web.
+It lets people record a story around their Instagram pictures and share it as a nostalgic slideshow on the web. Check it out on http://storywheel.cc
 
 ## Technical Details
 
-The application is built as a client-side javascript app.
+The application is built as a client-side javascript app. Ruby on Rails is only used to provide facebook open graph tags, precache some of the SoundCloud API requests and to have nice links for the stories.
 
-Ruby on Rails is only used to provide facebook open graph tags, precache some of the SoundCloud API requests and to have nice links for the stories.
+The audio recording when creating a new storywheel is implemented using the SoundCloud Javascript SDK and then uploaded to SoundCloud. Timed comments are then created to reference each picture to a specific time position in this recording.
 
-The audio recording when creating a new storywheel is provided by the SoundCloud Javascript SDK using Adobe Flash and then uploaded and stored on SoundCloud.
-
-Timed comments are then created to reference each Instagram picture to a specific time position in this recording.
-
-Aside from that a moderated group on SoundCloud is used to currate the tracks shown on the landing page.
+A moderated group is used to currate the stories shown on the landing page.
 
 ## Custom Story Wheels
 
-Due to the fact that all stories are basically just SoundCloud tracks with timed comments to trigger the next slide/picture it is possible to turn already existing tracks on SoundCloud into stories without having to use the recording flow on storywheel.cc.
+Due to the fact that all stories are basically just SoundCloud tracks with timed comments to trigger the next slide/picture it is possible to turn already existing tracks on SoundCloud into stories without having to use the recording flow on storywheel.cc. This also allows to use pictures that are not stored on Instagram. 
 
 The followings steps are necessary to do that:
 
@@ -53,7 +49,10 @@ http://storywheel.cc/alex-eric/soundcloud-story
 
 ## Embedding
 
-The storywheel can be embedded into a different site using an iframe.
-Just adjust this code to your link:
+Stories can be embedded into other websites using iframes.
+Just replace the link in this code and embed it in your website:
 
     <iframe width="400" height="400" scrolling="no" frameborder="no" src="http://storywheel.cc/jwagener-test/not-boston"></iframe>
+
+
+
