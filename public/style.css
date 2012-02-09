@@ -131,7 +131,8 @@ body#record .screen, body#endrecord .screen {
   height: 360px;
   margin: auto;
   background-repeat: no-repeat;
-	background-size: 360px;
+  background-size: cover;
+  background-position: 50%;
 }
 
 body#record #currentImage {
