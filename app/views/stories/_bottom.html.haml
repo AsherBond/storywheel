@@ -1,7 +1,7 @@
 .footer
   %ul
     %li= link_to "Story Wheel", "/"
-    %li= link_to "Create your Story Wheel", "#", :class => "build-your-own"
+    %li.create-own= link_to "Create your Story Wheel", "#", :class => "build-your-own"
     %li= link_to "About", "#", :class => "aboutLink"
     = render :partial => "stories/social"
 
@@ -13,7 +13,7 @@
 
   It was started by <a href="http://twitter.com/johanneswagener">Johannes Wagener</a> &amp; <a href="http://twitter.com/kbirkenbach">Katharina Birkenbach</a> during the 
   <a href="http://musichackday.org">Music Hack Day Boston</a> in 2011
-  and is now part of the <a href="http://soundcloudlabs.com">SoundCloud Labs</a>, where we showcase a number of experimental projects, features and apps all built using <a href="http://developers.soundcloud.com">SoundCloud’s API</a>.<br/>
+  and is now part of the <a href="http://soundcloudlabs.com">SoundCloud Labs</a>, where we showcase a number of experimental projects, features and apps built using <a href="http://developers.soundcloud.com">SoundCloud’s API</a>.<br/>
 
 
 #step1.step.hidden= render :partial => "new_step1"

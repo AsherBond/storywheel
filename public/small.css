@@ -25,4 +25,8 @@
   .footer ul li.social {
     display: none;
   }
+
+  .create-own {
+    display: none;
+  }
 }
