@@ -379,6 +379,10 @@ a.labs:hover {
 	float: left;
 }
 
+li.social.facebook {
+  margin-top: 2px;
+}
+
 .footer ul li:last-child  {
 	border-right: 0;
 }
