@@ -28,6 +28,7 @@ The comment needs to be created by the owner of the track and has to match the f
     <a href=http://storywheel.cc/{username}/{trackname}#{direct link to the picture}>{some link text}</a>
 
 For Example:
+
     <a href=http://storywheel.cc/alex-eric/soundcloud-story#http://distilleryimage3.s3.amazonaws.com/8f03ffce15ab11e19896123138142014_7.jpg>StoryWheel Picture</a>
 
 2) (optional) You can customize the StoryWheel experience by setting various machine tags on the track. These are the supported tags:
@@ -55,4 +56,4 @@ http://storywheel.cc/alex-eric/soundcloud-story
 The storywheel can be embedded into a different site using an iframe.
 Just adjust this code to your link:
 
-    <iframe width="500" height="300" scrolling="no" frameborder="no" src="http://storywheel.cc/jwagener-test/not-boston"></iframe>
+    <iframe width="400" height="400" scrolling="no" frameborder="no" src="http://storywheel.cc/jwagener-test/not-boston"></iframe>
