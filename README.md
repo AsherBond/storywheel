@@ -14,7 +14,7 @@ A moderated group is used to currate the stories shown on the landing page.
 
 ## Custom Story Wheels
 
-Due to the fact that all stories are basically just SoundCloud tracks with timed comments to trigger the next slide/picture it is possible to turn already existing tracks on SoundCloud into stories without having to use the recording flow on storywheel.cc. This also allows to use pictures that are not stored on Instagram. 
+Due to the fact that all stories are basically just SoundCloud tracks with timed comments to trigger the next slide/picture it is possible to turn already existing tracks on SoundCloud into stories without having to use the recording flow on storywheel.cc. This also allows to use pictures that are not stored on Instagram (non-square images will be cropped). 
 
 The followings steps are necessary to do that:
 
