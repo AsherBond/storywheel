@@ -5,16 +5,25 @@
 
   html {
     background-image: none;
+    background-color: #111;
+    border-radius: 7px;
+  }
+
+
+  a.labs {
+    border-bottom-right-radius: 7px;
   }
 
   .screen {
-    margin-top: 10px;
+    margin-top: 16px;
   }
 
   .screen.intro {
     width: 100%;
   }
+
   .footer {
+    background: initial;
   }
 
   .footer ul li a, .footer ul li.social {
