@@ -5,7 +5,7 @@
 
   html {
     background-image: none;
-    background-color: #111;
+    background-color: #eee;
     border-radius: 7px;
   }
 
@@ -27,8 +27,13 @@
   }
 
   .footer ul li a, .footer ul li.social {
+    color: #111;
     padding: 2px 10px;
-    font-size: 18px;
+    font-size: 20px;
+  }
+
+  .footer ul li a:hover {
+    background: initial;
   }
 
   .footer ul li.social {
