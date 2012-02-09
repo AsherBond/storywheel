@@ -15,9 +15,9 @@ window.SW =
       
     SW.parseFragmentOptions()
     $("body").addClass("demo") if SW.options.demo
-    SW.setState("play")        if SW.options.autoplay
     SW.loadAllStories(0)       if SW.getState() == "home"
     SW.preparePlay()           if SW.getState() == "show"
+    SW.setState("play")        if SW.options.autoplay # not iOS
 
   showImage: (imageUrl) ->
     $("#currentImage").css("background-image", "url("+imageUrl+")")
