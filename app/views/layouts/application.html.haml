@@ -6,8 +6,9 @@
       %script!= "window.track = #{@track.to_json}; window.comments = #{@comments.to_json}; "
 
     %script!= "window.storywheelOptions = #{@options.to_json};"
+    %meta{name: "viewport", content: "width = 400px, user-scalable = no"}
 
-    = stylesheet_link_tag    "/style.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
+    = stylesheet_link_tag    "/style.css", "/small.css", "http://fonts.googleapis.com/css?family=Amatic+SC"
     = javascript_include_tag "http://connect.soundcloud.com/sdk.js", "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", "/jquery.tmp.js", "http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.8.13/jquery-ui.min.js", "application"
     = csrf_meta_tags
     %meta{property: "og:site_name",   content: "Story Wheel"}

@@ -1,0 +1,28 @@
+@media all and (max-width: 401px) {
+  .bottom {
+    height: 28px;
+  }
+
+  html {
+    background-image: none;
+  }
+
+  .screen {
+    margin-top: 10px;
+  }
+
+  .screen.intro {
+    width: 100%;
+  }
+  .footer {
+  }
+
+  .footer ul li a, .footer ul li.social {
+    padding: 2px 10px;
+    font-size: 18px;
+  }
+
+  .footer ul li.social {
+    display: none;
+  }
+}

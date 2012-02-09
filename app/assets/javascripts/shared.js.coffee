@@ -12,8 +12,10 @@ window.SW =
     SC.initialize 
       client_id:    SW.options.soundcloudClientId
       redirect_uri: SW.options.soundcloudRedirectUri
-      
+
     SW.parseFragmentOptions()
+    if SW.Helpers.isIOS()
+      SW.options.autoplay = false
     $("body").addClass("demo") if SW.options.demo
     SW.loadAllStories(0)       if SW.getState() == "home"
     SW.preparePlay()           if SW.getState() == "show"
@@ -60,11 +62,12 @@ window.SW =
         autoLoad: true
         onload: ->
           SW.registerCommentCallbacks(window.comments)
-          if SW.options.autoplay # not iOS
+          if SW.options.autoplay
             SW.play()
-      if SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
+      if SW.Helpers.multiSoundSupported() && SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
         SW.backgroundTrackSound = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
-      SW.loadSlideSound()
+      if SW.Helpers.multiSoundSupported()
+        SW.loadSlideSound()
       $("#playButton").addClass("ready")
 
   play: ->
@@ -171,6 +174,12 @@ window.SW =
         $("#storyTmpl").tmpl(track).appendTo(".stories ul");
 
 SW.Helpers =
+  isIOS: ->
+    (/iphone|ipod|ipad/gi).test(navigator.platform)
+
+  multiSoundSupported: () ->
+    !SW.Helpers.isIOS()
+
   waitTillTrackIsFinished: (uri, callback) ->
     checkState = ->
       SC.get uri, (track) ->
