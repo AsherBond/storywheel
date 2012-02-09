@@ -56,13 +56,15 @@ window.SW =
   
   preparePlay: () ->
     SC.whenStreamingReady ->
-      SW.foregroundTrackSound = SC.stream window.track.id, autoLoad: true
+      SW.foregroundTrackSound = SC.stream window.track.id,
+        autoLoad: true
+        onload: ->
+          SW.registerCommentCallbacks(window.comments)
+          if SW.options.autoplay # not iOS
+            SW.play()
       if SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
         SW.backgroundTrackSound = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
       SW.loadSlideSound()
-      SW.registerCommentCallbacks(window.comments)
-      if SW.options.autoplay
-        SW.play()
       $("#playButton").addClass("ready")
 
   play: ->
