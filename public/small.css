@@ -11,7 +11,8 @@
 
 
   a.labs {
-    border-bottom-right-radius: 7px;
+    margin-right: 15px;
+    border-top-right-radius: 7px;
   }
 
   .screen {
@@ -24,6 +25,10 @@
 
   .footer, body#about .bottom {
     background: initial;
+  }
+
+  .footer ul {
+    margin-left: 5px;
   }
 
   .footer ul li a, .footer ul li.social {
