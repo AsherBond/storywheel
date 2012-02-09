@@ -67,7 +67,9 @@ class StoriesController < ApplicationController
       @comments = cache_store.fetch "#{permalink}/comments", :force => force do
         logger.info "SC GET: #{permalink}/comments"
         sc.get("#{@track.uri}/comments", :limit => 200)
-      end.sort_by(&:timestamp)      
+      end
+      @comments = @comments.select { |c| c.timestamp && c.user_id == @track.user_id }
+      @comments.sort_by!(&:timestamp)
       @options = DEFAULT_OPTIONS.merge optionsFromTagList(@track.tag_list)
       @social[:image] = @options[:image] if @options[:image]
       @social[:title] = "#{@track.title} by #{@track.user.username}"
