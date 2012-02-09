@@ -25,22 +25,23 @@ The followings steps are necessary to do that:
 1) You have to create a timed comment for each picture that you want to show at the specific position.
 The comment needs to be created by the owner of the track and has to match the following pattern:
 
-<a href=http://storywheel.cc/{username}/{trackname}#{direct link to the picture}>{some link text}</a>
+    <a href=http://storywheel.cc/{username}/{trackname}#{direct link to the picture}>{some link text}</a>
 
 For Example:
-<a href=http://storywheel.cc/alex-eric/soundcloud-story#http://distilleryimage3.s3.amazonaws.com/8f03ffce15ab11e19896123138142014_7.jpg>StoryWheel Picture</a>
+    <a href=http://storywheel.cc/alex-eric/soundcloud-story#http://distilleryimage3.s3.amazonaws.com/8f03ffce15ab11e19896123138142014_7.jpg>StoryWheel Picture</a>
 
 2) (optional) You can customize the StoryWheel experience by setting various machine tags on the track. These are the supported tags:
 
-* storywheel:slideSound=0 to turn of the slide sound.
-* storywheel:backgroundTrackId={track id} to play an additional track (usually music) in the background while playing the story wheel.
-* storywheel:backgroundTrackVolume=25 to adjust the background track volume.
-* storywheel:image={url to an image} to show an alternative image in the preview on storywheel.cc
-* storywheel:backgroundImage={url to an image} to show an alternative background image.
+* __storywheel:slideSound=0__ to turn of the slide sound.
+* __storywheel:backgroundTrackId={track id}__ to play an additional track  while playing the story wheel.
+* __storywheel:backgroundTrackVolume=25__ to adjust the background track volume.
+* __storywheel:image={url to an image}__ to show an alternative image in the preview on storywheel.cc
+* __storywheel:backgroundImage={url to an image}__ to show an alternative background image.
 
 To set these machine tags through the SoundCloud track edit interface best prepare them in a text editor, surround them by quotes and then copy and paste them into the tag textarea.
 
-For example: "storywheel:backgroundTrackId=293"
+For example: __"storywheel:backgroundTrackId=293"__
+
 https://skitch.com/e-jwagener/8yycp/edit-test-on-soundcloud-create-record-and-share-your-sounds-for-free
 
 3) To view the story on storywheel, just replace soundcloud.com with storywheel.cc in the track link and open it. For example:
@@ -54,4 +55,4 @@ http://storywheel.cc/alex-eric/soundcloud-story
 The storywheel can be embedded into a different site using an iframe.
 Just adjust this code to your link:
 
-      <iframe width="500" height="300" scrolling="no" frameborder="no" src="http://storywheel.cc/jwagener-test/not-boston"></iframe>
+    <iframe width="500" height="300" scrolling="no" frameborder="no" src="http://storywheel.cc/jwagener-test/not-boston"></iframe>
