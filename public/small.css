@@ -22,14 +22,17 @@
     width: 100%;
   }
 
-  .footer {
+  .footer, body#about .bottom {
     background: initial;
   }
 
   .footer ul li a, .footer ul li.social {
-    color: #111;
     padding: 2px 10px;
     font-size: 20px;
+  }
+
+  .bottom, .bottom a, .bottom a:active, .bottom a:visited {
+    color: #111;
   }
 
   .footer ul li a:hover {
