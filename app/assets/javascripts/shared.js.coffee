@@ -57,13 +57,18 @@ window.SW =
         )()
   
   preparePlay: () ->
+    ready = -> 
+      SW.registerCommentCallbacks(window.comments)
+      if SW.options.autoplay
+        SW.play()
+
     SC.whenStreamingReady ->
       SW.foregroundTrackSound = SC.stream window.track.id,
         autoLoad: true
         onload: ->
-          SW.registerCommentCallbacks(window.comments)
-          if SW.options.autoplay
-            SW.play()
+          ready() if SW.Helpers.isIOS()
+      ready() if !SW.Helpers.isIOS()
+
       if SW.Helpers.multiSoundSupported() && SW.options.backgroundTrackId? && SW.options.backgroundTrackId != ""
         SW.backgroundTrackSound = SC.stream SW.options.backgroundTrackId, {autoLoad: true, volume: SW.options.backgroundVolume }
       if SW.Helpers.multiSoundSupported()
