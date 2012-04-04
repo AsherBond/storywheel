@@ -35,7 +35,7 @@ window.SW =
     SW.slideSound = SC.stream SW.options.slideTrackId, autoLoad: true
     
   playSlideSound: () ->
-    if SW.options.slideSound
+    if SW.options.slideSound && SW.slideSound
       SW.slideSound.play()
 
   preloadImage: (url) ->
