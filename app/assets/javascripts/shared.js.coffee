@@ -145,19 +145,20 @@ window.SW =
     if error
       throw new Error(uri.query.error)
     else
-      accessToken = uri.fragment.access_token
+      SW.instagramAccessToken = uri.fragment.access_token
       SW.setState("pick")
-      SW.loadInstagramPictures(accessToken)
+      SW.loadInstagramPictures(SW.instagramAccessToken)
 
   loadInstagramPictures: (token, maxId) ->
     endpoint = "https://api.instagram.com/v1/users/self/media/recent"
     url = endpoint + "?callback=?&count=48&access_token=" + token
     if maxId?
-      url += "&max_id" + maxId
+      url += "&max_id=" + maxId
     $.ajax
       dataType: "JSONP"
       "url": url
       success: (r) ->
+        SW.instagramMaxId = r.pagination.next_max_id
         $.each r.data, -> 
           image = 
             url: this.images.standard_resolution.url,

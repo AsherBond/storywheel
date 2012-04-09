@@ -2,6 +2,13 @@ $(".build-your-own").live "click", (e) ->
   SW.setState("connect")
   e.preventDefault()
 
+
+$ () ->
+  $("ul.all-images").scroll (e) ->
+    scrolledToEnd = $(this)[0].scrollHeight - $(this).scrollTop() <= $(this).height()
+    if scrolledToEnd
+      SW.loadInstagramPictures(SW.instagramAccessToken, SW.instagramMaxId)
+
 $("ul.all-images li").live "click", (e) ->
   empties = $("ul.selection li.empty")
   if empties.length < 2

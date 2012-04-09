@@ -769,6 +769,8 @@ li.social.facebook {
 
 #images ul {
 	margin: 0 auto;
+  height: 230px;
+  overflow-x: scroll;
 }
 
 #images ul li {
