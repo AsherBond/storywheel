@@ -35,8 +35,11 @@ $("#recordStatus").live "click", (e) ->
 
 $(".startRecording").live "click", (e) -> 
   SW.updateTimer(0);  
+  SW.track("Create", "wantRecord")
+
   SC.record
     start: () ->
+      SW.track("Create", "recording")
       SW.setState("record")
       SW.showNextImageFromSelection()
   
@@ -45,12 +48,15 @@ $(".startRecording").live "click", (e) ->
   e.preventDefault()
 
 $("#goToStep3").live "click", (e) ->
+  SW.track("Create", "recorded")
   e.preventDefault()
   
 $("#uploadButton").live "click", (e) ->
+  SW.track("Create", "wantUpload")
   e.preventDefault()
   SC.connect
     connected: ->
+      SW.track("Create", "connected")
       title = $("#title").val()
       title = "A story" if title == ""
       tags = []
@@ -66,14 +72,20 @@ $("#uploadButton").live "click", (e) ->
       $(".progress #wheel", window).addClass("rotate")
       $("#progressMessage").text("Uploading...")
       SC.recordUpload options, (track) ->
+        SW.track("Create", "uploaded")
         $("#progressMessage").text("Processing...")
         $.each SW.slides, ->
           SW.Helpers.createCommentForSlide(track, this)
-        
+
         SC.put "/groups/" + SW.options.soundcloudGroupId + "/contributions/" + track.id, (contribution) ->
-          # track contributed to group. no action
+          SW.track("Create", "contributed")
+
+
+        if history.pushState
+          history.pushState({}, "StoryWheel", track.permalink_url.replace("soundcloud.com", window.location.host));
 
         SW.Helpers.waitTillTrackIsFinished track.uri, (track) ->
+          SW.track("Create", "processed")
           window.location = track.permalink_url.replace("soundcloud.com", window.location.host)
     
 $(".connectInstagram").live 'click', (e) ->

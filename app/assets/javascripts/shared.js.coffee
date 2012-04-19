@@ -7,6 +7,10 @@ window.SW =
   slides: []
   options: {}
   
+
+  track: (category, action) ->
+    _gaq.push(['_trackEvent', category, action])
+
   initialize: (options)->
     SW.options = options
     SC.initialize 
