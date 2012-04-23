@@ -212,8 +212,8 @@ SW.Helpers =
       # comment created. no action
 
   imageUrlFromComment: (comment) ->
-    comment.body.match(/#([^>]*)\>/)[1]
-  
+    comment.body.match(/#([^>"]*)/)[1]
+
   fadeOut: (sound, amount, callback) ->
     vol = sound.volume;
     if !vol
