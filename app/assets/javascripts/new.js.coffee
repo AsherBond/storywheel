@@ -42,9 +42,13 @@ $(".startRecording").live "click", (e) ->
       SW.track("Create", "recording")
       SW.setState("record")
       SW.showNextImageFromSelection()
-  
+
     progress: (ms, avgPeak) ->
       SW.updateTimer(ms);
+
+    cancel: () ->
+      SW.track("Create", "recordDeny")
+
   e.preventDefault()
 
 $("#goToStep3").live "click", (e) ->
