@@ -50,14 +50,15 @@ window.SW =
       if comment.user_id == track.user_id && comment.body.match(/storywheel.(com|cc)/)
         (->
           imageUrl = SW.Helpers.imageUrlFromComment(comment)
-          SW.preloadImage(imageUrl)
-          if comment.timestamp == 0
-            SW.showImage(imageUrl) 
-          else
-            SW.foregroundTrackSound.onposition comment.timestamp, () ->
+          if imageUrl
+            SW.preloadImage(imageUrl)
+            if comment.timestamp == 0
               SW.showImage(imageUrl)
-              SW.playSlideSound()
-            , comment
+            else
+              SW.foregroundTrackSound.onposition comment.timestamp, () ->
+                SW.showImage(imageUrl)
+                SW.playSlideSound()
+              , comment
         )()
   
   preparePlay: () ->
@@ -212,7 +213,7 @@ SW.Helpers =
       # comment created. no action
 
   imageUrlFromComment: (comment) ->
-    comment.body.match(/#([^>"]*)/)[1]
+    (comment.body.match(/#([^>"]*)/) || [])[1]
 
   fadeOut: (sound, amount, callback) ->
     vol = sound.volume;
